@@ -22,6 +22,11 @@ In order for you to have the project up and running after downloading, you need 
 ```
 yarn start
 ```
+or just for the client, 
+```
+expo start
+```
+
 
 3. Test the project as needed.
 
@@ -40,7 +45,7 @@ For the versions available, see the [tags on this repository](https://github.com
 
 ## Authors
 
-- **Franklin MAMVOULA** - _Frontend implementation and testing._,
+- **Franklin Mamvoula** - _Frontend implementation and testing._,
 - **Simon Stern** - _Guidelines and Testing_
 - **Akshay Manchanda** - _Backend implementation_
 
