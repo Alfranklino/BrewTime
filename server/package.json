@@ -1,0 +1,30 @@
+{
+  "name": "BrewTime",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "db:up": "node-pg-migrate up --create-schema",
+    "db:drop": "psql -U postgres -d postgres -c \"DROP SCHEMA IF EXISTS \\\"brewtime\\\" CASCADE\"",
+    "db:reset": "yarn db:drop && yarn db:create && yarn db:up",
+    "db:seed": "node seeds/index.js",
+    "db:ras": "yarn db:reset && yarn db:seed",
+    "db:create": "psql -U postgres -d postgres -c \"CREATE EXTENSION IF NOT EXISTS pgcrypto\"",
+    "start": "NODE_ENV=production node index.js",
+    "start:dev": "NODE_ENV=development nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.7.0",
+    "chalk": "^2.4.2",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "graphql": "^14.4.2",
+    "node-pg-migrate": "^3.21.1",
+    "path": "^0.12.7",
+    "pg": "^7.11.0",
+    "squel": "^5.13.0"
+  }
+}
