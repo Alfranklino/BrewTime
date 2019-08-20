@@ -80,6 +80,12 @@ const botTabNavigator = createBottomTabNavigator(
       style: {
         backgroundColor: "#E8F1F2"
       }
+    },
+    navigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index];
+      return {
+        hearderTitle: routeName
+      };
     }
   }
 );
@@ -87,7 +93,11 @@ const botTabNavigator = createBottomTabNavigator(
 const AppContainer = createAppContainer(botTabNavigator);
 
 export default function App() {
-  return <AppContainer />;
+  return (
+    <ApolloProvider client={client}>
+      <AppContainer />
+    </ApolloProvider>
+  );
 }
 
 // const styles = StyleSheet.create({
