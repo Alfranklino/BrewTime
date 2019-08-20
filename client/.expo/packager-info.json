@@ -2,8 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 7387,
+  "packagerPid": 2969,
   "expoServerNgrokUrl": "https://tm-kez.anonymous.client.exp.direct",
   "packagerNgrokUrl": "https://packager.tm-kez.anonymous.client.exp.direct",
-  "ngrokPid": 7398
+  "ngrokPid": 2980,
+  "webpackServerPort": null
 }
