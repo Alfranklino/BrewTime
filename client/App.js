@@ -17,8 +17,22 @@ import HomeScreen from "./src/screens/Home";
 import LocationScreen from "./src/screens/Location";
 import BookingScreen from "./src/screens/Booking";
 import StoreScreen from "./src/screens/Store";
+import ViewerBookingsScreen from "./src/screens/ViewerBookings";
+import ProductDetailsScreen from "./src/screens/ProductDetails";
+import BookingDetailsScreen from "./src/screens/BookingDetails";
 
 //------ Navigation ------
+const bookingStackNavigator = createStackNavigator({
+  Booking: BookingScreen,
+  MyBookings: ViewerBookingsScreen,
+  BookingDetails: BookingDetailsScreen
+});
+
+const storeStackNavigator = createStackNavigator({
+  Store: StoreScreen,
+  ProductDetails: ProductDetailsScreen
+});
+
 const botTabNavigator = createBottomTabNavigator(
   {
     Home: {
@@ -40,7 +54,7 @@ const botTabNavigator = createBottomTabNavigator(
       }
     },
     Booking: {
-      screen: BookingScreen,
+      screen: bookingStackNavigator,
       navigationOptions: {
         tabBarLabel: "Booking",
         tabBarIcon: ({ tintColor }) => (
@@ -49,7 +63,7 @@ const botTabNavigator = createBottomTabNavigator(
       }
     },
     Store: {
-      screen: StoreScreen,
+      screen: storeStackNavigator,
       navigationOptions: {
         tabBarLabel: "Store",
         tabBarIcon: ({ tintColor }) => (
@@ -70,15 +84,11 @@ const botTabNavigator = createBottomTabNavigator(
   }
 );
 
-export default createAppContainer(botTabNavigator);
+const AppContainer = createAppContainer(botTabNavigator);
 
-// export function App() {
-//   return (
-//     <View>
-//       <Text>Open up App.js to start working on your app!</Text>
-//     </View>
-//   );
-// }
+export default function App() {
+  return <AppContainer />;
+}
 
 // const styles = StyleSheet.create({
 //   container: {
