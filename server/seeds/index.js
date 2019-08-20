@@ -1,12 +1,12 @@
-const { Pool } = require("pg")
-const squel = require("squel").useFlavour("postgres")
-const config = require("../config/default.json")
+const { Pool } = require("pg");
+const squel = require("squel").useFlavour("postgres");
+const config = require("../config/default.json");
 
 const breweriesSeeds = [
   {
     name: "Red Autumn"
   }
-]
+];
 
 const descriptionsSeeds = [
   {
@@ -27,7 +27,7 @@ const descriptionsSeeds = [
     dorder: 3,
     brewery_id: 1
   }
-]
+];
 
 const mapsSeeds = [
   {
@@ -37,7 +37,7 @@ const mapsSeeds = [
     longitudedelta: 79.39993,
     brewery_id: 1
   }
-]
+];
 
 const locationsSeeds = [
   {
@@ -64,7 +64,7 @@ const locationsSeeds = [
     longitude: -79.40289,
     map_id: 1
   }
-]
+];
 
 const bookingsSeeds = [
   {
@@ -76,38 +76,42 @@ const bookingsSeeds = [
     time: "2019-07-25 10:00:00",
     brewery_id: 1
   }
-]
+];
 
 const imagesSeeds = [
   {
-    uri: "https://via.placeholder.com/1136x640",
+    uri:
+      "https://images.squarespace-cdn.com/content/v1/5825e780ff7c50364e59d2ef/1565963290824-XK75PPACHJH81U8O2G50/ke17ZwdGBToddI8pDm48kEpVg-ILAPna1wRh-xAJ9fRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwEv36x-EUL2-BSQ5feDhwGCbXuJBFqZ-erYzVouT8yOb9TwqchglLQOCYTRn7ZGxI/image-asset.jpeg?format=300w",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
-    width: 1136,
-    height: 640
-  },
-  {
-    uri: "https://via.placeholder.com/960x640",
-    description:
-      "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
-    width: 960,
-    height: 640
-  },
-  {
-    uri: "https://via.placeholder.com/320x480",
-    description:
-      "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
-    width: 320,
+    width: 480,
     height: 480
   },
   {
-    uri: "https://via.placeholder.com/320x416",
+    uri:
+      "https://images.squarespace-cdn.com/content/v1/5825e780ff7c50364e59d2ef/1564692935867-7B8GZZV8BD5I4T6MV4G4/ke17ZwdGBToddI8pDm48kHem505q6McQd8XRhQc9zkRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxpEURhgSBEh9ILe0HKIG3CcOCklsxWwam3CdWF6Xw7jwVv5P97BEtB5XaVnmvMtTA/image-asset.jpeg?format=300w",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
-    width: 320,
-    height: 416
+    width: 480,
+    height: 480
+  },
+  {
+    uri:
+      "https://images.squarespace-cdn.com/content/v1/5825e780ff7c50364e59d2ef/1564090327009-TSCVT18HNM77FL24SWVS/ke17ZwdGBToddI8pDm48kHem505q6McQd8XRhQc9zkRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxpEURhgSBEh9ILe0HKIG3CcOCklsxWwam3CdWF6Xw7jwVv5P97BEtB5XaVnmvMtTA/image-asset.jpeg?format=300w",
+    description:
+      "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
+    width: 480,
+    height: 480
+  },
+  {
+    uri:
+      "https://images.squarespace-cdn.com/content/v1/5825e780ff7c50364e59d2ef/1565665217930-2KEM1Q3O7KA1P73316AJ/ke17ZwdGBToddI8pDm48kICZhzhlpkTfZgBvAXFSxyhZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpw5opcnmBGTrSvl2qRMpP26yA6cXWreZBPZk6SUOsPorfERqjnAqscnEdqlY2BJvs0/image-asset.jpeg?format=300w",
+    description:
+      "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
+    width: 480,
+    height: 480
   }
-]
+];
 
 const dimensionsSeeds = [
   {
@@ -116,7 +120,7 @@ const dimensionsSeeds = [
     weight: 32.0,
     width: 15.0
   }
-]
+];
 
 const productsSeeds = [
   {
@@ -128,9 +132,9 @@ const productsSeeds = [
     price: 200,
     brewery_id: 1
   }
-]
+];
 
-const metadataSeeds = [{ product_id: 1 }]
+const metadataSeeds = [{ product_id: 1 }];
 
 const breweriesImagesSeeds = [
   {
@@ -149,7 +153,7 @@ const breweriesImagesSeeds = [
     brewery_id: 1,
     image_id: 4
   }
-]
+];
 
 const bookingsImagesSeeds = [
   {
@@ -168,7 +172,7 @@ const bookingsImagesSeeds = [
     booking_id: 1,
     image_id: 4
   }
-]
+];
 
 const productsImagesSeeds = [
   {
@@ -187,15 +191,15 @@ const productsImagesSeeds = [
     product_id: 1,
     image_id: 4
   }
-]
+];
 
 const seed = async () => {
-  const pg = await new Pool(config.db).connect()
+  const pg = await new Pool(config.db).connect();
 
   try {
-    await pg.query("BEGIN")
+    await pg.query("BEGIN");
 
-    console.log("Seeding Breweries...")
+    console.log("Seeding Breweries...");
 
     await Promise.all(
       breweriesSeeds.map(breweriesSeed =>
@@ -207,11 +211,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Breweries... [DONE]")
+    console.log("Seeding Breweries... [DONE]");
 
-    console.log("Seeding Descriptions...")
+    console.log("Seeding Descriptions...");
 
     await Promise.all(
       descriptionsSeeds.map(descriptionsSeed =>
@@ -223,11 +227,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Descriptions... [DONE]")
+    console.log("Seeding Descriptions... [DONE]");
 
-    console.log("Seeding Maps...")
+    console.log("Seeding Maps...");
 
     await Promise.all(
       mapsSeeds.map(mapsSeed =>
@@ -239,11 +243,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Maps... [DONE]")
+    console.log("Seeding Maps... [DONE]");
 
-    console.log("Seeding Locations...")
+    console.log("Seeding Locations...");
 
     await Promise.all(
       locationsSeeds.map(locationSeed =>
@@ -255,11 +259,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Locations... [DONE]")
+    console.log("Seeding Locations... [DONE]");
 
-    console.log("Seeding Bookings...")
+    console.log("Seeding Bookings...");
 
     await Promise.all(
       bookingsSeeds.map(bookingsSeed =>
@@ -271,11 +275,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Bookings... [DONE]")
+    console.log("Seeding Bookings... [DONE]");
 
-    console.log("Seeding Images...")
+    console.log("Seeding Images...");
 
     await Promise.all(
       imagesSeeds.map(imagesSeed =>
@@ -287,11 +291,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Images... [DONE]")
+    console.log("Seeding Images... [DONE]");
 
-    console.log("Seeding Dimensions...")
+    console.log("Seeding Dimensions...");
 
     await Promise.all(
       dimensionsSeeds.map(dimensionsSeed =>
@@ -303,11 +307,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Dimensions... [DONE]")
+    console.log("Seeding Dimensions... [DONE]");
 
-    console.log("Seeding Products...")
+    console.log("Seeding Products...");
 
     await Promise.all(
       productsSeeds.map(productsSeed =>
@@ -319,11 +323,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Products... [DONE]")
+    console.log("Seeding Products... [DONE]");
 
-    console.log("Seeding Metadata...")
+    console.log("Seeding Metadata...");
 
     await Promise.all(
       metadataSeeds.map(metadataSeed =>
@@ -335,11 +339,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Metadata... [DONE]")
+    console.log("Seeding Metadata... [DONE]");
 
-    console.log("Seeding Brewery Images...")
+    console.log("Seeding Brewery Images...");
 
     await Promise.all(
       breweriesImagesSeeds.map(breweriesImagesSeed =>
@@ -351,11 +355,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Brewery Images... [DONE]")
+    console.log("Seeding Brewery Images... [DONE]");
 
-    console.log("Seeding Bookings Images...")
+    console.log("Seeding Bookings Images...");
 
     await Promise.all(
       bookingsImagesSeeds.map(bookingsImagesSeed =>
@@ -367,11 +371,11 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Bookings Images... [DONE]")
+    console.log("Seeding Bookings Images... [DONE]");
 
-    console.log("Seeding Products Images...")
+    console.log("Seeding Products Images...");
 
     await Promise.all(
       productsImagesSeeds.map(productsImagesSeed =>
@@ -383,21 +387,21 @@ const seed = async () => {
             .toParam()
         )
       )
-    )
+    );
 
-    console.log("Seeding Products Images... [DONE]")
+    console.log("Seeding Products Images... [DONE]");
 
-    await pg.query("COMMIT")
+    await pg.query("COMMIT");
   } catch (e) {
-    await pg.query("ROLLBACK")
-    throw e
+    await pg.query("ROLLBACK");
+    throw e;
   } finally {
-    pg.release()
+    pg.release();
   }
-}
+};
 
 seed().catch(e => {
   setImmediate(() => {
-    throw e
-  })
-})
+    throw e;
+  });
+});
