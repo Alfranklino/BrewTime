@@ -5,7 +5,31 @@ import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
-function getCoords() {
+// function getCoords() {
+//   const { loading, error, data } = useQuery(gql`
+//     {
+//       getMapData(input: { token: 1, brewery_id: 1 }) {
+//         latitude
+//         longitude
+//         latitudeDelta
+//         longitudeDelta
+//       }
+//     }
+//   `);
+
+//   if (loading) return <Text>Loading...</Text>;
+//   if (error) return <Text>Error:</Text>;
+//   if (!data) {
+//     return <Text>Loading...</Text>;
+//   } else {
+//     let mapData = data.getMapData;
+//     // console.log(mapData);
+
+//     return mapData;
+//   }
+// }
+
+function Location() {
   const { loading, error, data } = useQuery(gql`
     {
       getMapData(input: { token: 1, brewery_id: 1 }) {
@@ -19,33 +43,21 @@ function getCoords() {
 
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>Error:</Text>;
-  if (!data) {
-    return <Text>Loading...</Text>;
-  } else {
-    let mapData = data.getMapData;
-    // console.log(mapData);
-
-    return mapData;
-  }
-}
-
-function Location() {
-  const coords = getCoords();
-
-  console.log(coords);
+  let mapData = data.getMapData;
+  //   let mapData = getCoords();
 
   return (
     <ScrollView>
       <Text style={Styles.textTitle}>Location</Text>
-      <View style={{ height: 300 }}>
+      <View style={{ height: 450 }}>
         <MapView
           provider={PROVIDER_GOOGLE}
           style={Styles.map}
           initialRegion={{
-            latitude: 43.644,
-            longitude: -79.39993,
-            latitudeDelta: 0.001757,
-            longitudeDelta: 0.003866
+            latitude: mapData.latitude,
+            longitude: mapData.longitude,
+            latitudeDelta: mapData.latitudeDelta,
+            longitudeDelta: mapData.longitudeDelta
           }}
           zoomEnabled={true}
           zoomControlEnabled={true}
@@ -53,8 +65,8 @@ function Location() {
           <Marker
             coordinate={
               (LatLng = {
-                latitude: 43.644,
-                longitude: -79.39993
+                latitude: mapData.latitude,
+                longitude: mapData.longitude
               })
             }
           />
