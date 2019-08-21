@@ -1,10 +1,9 @@
 import React from "react";
 import { View, ScrollView, Text, StyleSheet, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+//------ Database Calls ------
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
-
-//------ Database Calls ------
 
 function getImage(n) {
   const { loading, error, data } = useQuery(gql`
@@ -35,7 +34,7 @@ const Home = () => {
   const img1 = getImage(0);
   const img2 = getImage(2);
   return (
-    <ScrollView scrollEnabled="true">
+    <ScrollView scrollEnabled={true}>
       <View style={Styles.container}>
         <Text style={Styles.textTitle}>SideLaunch Brew Co</Text>
         <Text style={Styles.textContent}>
@@ -87,7 +86,7 @@ const Styles = StyleSheet.create({
     textAlign: "justify"
   },
   textTitle: {
-    fontSize: 25,
+    fontSize: 32,
     fontWeight: "bold",
     marginBottom: 10
   }

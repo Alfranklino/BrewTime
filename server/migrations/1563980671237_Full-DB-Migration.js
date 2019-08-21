@@ -21,8 +21,8 @@ exports.up = pgm => {
       "id" SERIAL PRIMARY KEY,
       "latitude" NUMERIC(8, 5) NOT NULL,
       "longitude" NUMERIC(8, 5) NOT NULL,
-      "latitudedelta" NUMERIC(6, 4) NOT NULL,
-      "longitudedelta" NUMERIC(6, 4) NOT NULL,
+      "latitudedelta" NUMERIC(8, 5) NOT NULL,
+      "longitudedelta" NUMERIC(8, 5) NOT NULL,
       "brewery_id" INTEGER REFERENCES breweries(id)
     );
   `),
@@ -116,5 +116,5 @@ exports.up = pgm => {
       "product_id" INTEGER REFERENCES products(id),
       "image_id" INTEGER REFERENCES images(id)
     );
-  `)
-}
+  `);
+};

@@ -32,9 +32,9 @@ const descriptionsSeeds = [
 const mapsSeeds = [
   {
     latitude: 43.644,
-    longitude: 79.39993,
-    latitudedelta: 43.644,
-    longitudedelta: 79.39993,
+    longitude: -79.39993,
+    latitudedelta: 0.001757,
+    longitudedelta: 0.003866,
     brewery_id: 1
   }
 ];
