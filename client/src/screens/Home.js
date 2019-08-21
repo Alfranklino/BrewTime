@@ -86,7 +86,7 @@ const Styles = StyleSheet.create({
     textAlign: "justify"
   },
   textTitle: {
-    fontSize: 25,
+    fontSize: 32,
     fontWeight: "bold",
     marginBottom: 10
   }

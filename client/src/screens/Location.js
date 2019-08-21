@@ -4,6 +4,7 @@ import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
+import { bold } from "ansi-colors";
 
 // function getCoords() {
 //   const { loading, error, data } = useQuery(gql`
@@ -32,19 +33,42 @@ import { useQuery } from "@apollo/react-hooks";
 function Location() {
   const { loading, error, data } = useQuery(gql`
     {
-      getMapData(input: { token: 1, brewery_id: 1 }) {
-        latitude
-        longitude
-        latitudeDelta
-        longitudeDelta
+      getBreweryInfo(input: { token: 1, brewery_id: 1 }) {
+        name
+        map {
+          latitude
+          longitude
+          locations {
+            address
+            description
+            latitude
+            longitude
+          }
+        }
       }
     }
   `);
 
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>Error:</Text>;
-  let mapData = data.getMapData;
+  let mapData = data.getBreweryInfo.map;
+  let locations = data.getBreweryInfo.map.locations;
+  console.log(locations);
   //   let mapData = getCoords();
+
+  //   const setMarkers = () => {
+  //     locations.map(loc => {
+  //       <Marker
+  //         coordinate={
+  //           (LatLng = {
+  //             latitude: loc.latitude,
+  //             longitude: loc.longitude
+  //           })
+  //         }
+  //       />;
+  //     });
+  //   };
+  //   console.log(setMarkers);
 
   return (
     <ScrollView>
@@ -56,22 +80,33 @@ function Location() {
           initialRegion={{
             latitude: mapData.latitude,
             longitude: mapData.longitude,
-            latitudeDelta: mapData.latitudeDelta,
-            longitudeDelta: mapData.longitudeDelta
+            latitudeDelta: 0.00676,
+            longitudeDelta: 0.006387
           }}
           zoomEnabled={true}
           zoomControlEnabled={true}
         >
-          <Marker
-            coordinate={
-              (LatLng = {
-                latitude: mapData.latitude,
-                longitude: mapData.longitude
-              })
-            }
-          />
+          {locations.map((loc, i) => (
+            <Marker
+              key={i}
+              coordinate={
+                (LatLng = {
+                  latitude: loc.latitude,
+                  longitude: loc.longitude
+                })
+              }
+              title={loc.address}
+            />
+          ))}
         </MapView>
       </View>
+      <Text style={Styles.textTitle2}>Our Agencies</Text>
+      {locations.map((loc, i) => (
+        <View key={i} style={Styles.sectionAddresses}>
+          <Text style={Styles.textContent2}>{loc.address}</Text>
+          <Text>{loc.description}</Text>
+        </View>
+      ))}
     </ScrollView>
   );
 }
@@ -83,16 +118,35 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 120
   },
+  sectionAddresses: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 20
+  },
   textContent: {
     margin: 20,
-
+    textAlign: "justify"
+  },
+  textContent2: {
+    fontSize: 20,
+    fontWeight: "bold",
+    margin: 17,
+    color: "green",
     textAlign: "justify"
   },
   textTitle: {
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 32,
     fontWeight: "bold",
     marginTop: 120,
+    marginBottom: 10
+  },
+  textTitle2: {
+    textAlign: "center",
+    fontSize: 26,
+    fontWeight: "bold",
+    marginTop: 40,
     marginBottom: 10
   },
   map: {
