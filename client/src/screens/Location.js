@@ -4,55 +4,32 @@ import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
-import { bold } from "ansi-colors";
 
-// function getCoords() {
-//   const { loading, error, data } = useQuery(gql`
-//     {
-//       getMapData(input: { token: 1, brewery_id: 1 }) {
-//         latitude
-//         longitude
-//         latitudeDelta
-//         longitudeDelta
-//       }
-//     }
-//   `);
-
-//   if (loading) return <Text>Loading...</Text>;
-//   if (error) return <Text>Error:</Text>;
-//   if (!data) {
-//     return <Text>Loading...</Text>;
-//   } else {
-//     let mapData = data.getMapData;
-//     // console.log(mapData);
-
-//     return mapData;
-//   }
-// }
-
-function Location() {
-  const { loading, error, data } = useQuery(gql`
-    {
-      getBreweryInfo(input: { token: 1, brewery_id: 1 }) {
-        name
-        map {
-          latitude
-          longitude
-          locations {
-            address
-            description
-            latitude
-            longitude
-          }
-        }
+const GET_MAP_DATA = gql`
+  {
+    getMapData(input: { token: 1, brewery_id: 1 }) {
+      latitude
+      longitude
+      latitudeDelta
+      longitudeDelta
+      locations {
+        id
+        address
+        description
+        latitude
+        longitude
       }
     }
-  `);
+  }
+`;
+
+function Location() {
+  const { loading, error, data } = useQuery(GET_MAP_DATA);
 
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>Error:</Text>;
-  let mapData = data.getBreweryInfo.map;
-  let locations = data.getBreweryInfo.map.locations;
+  let mapData = data.getMapData;
+  let locations = data.getMapData.locations;
   console.log(locations);
   //   let mapData = getCoords();
 
@@ -80,8 +57,8 @@ function Location() {
           initialRegion={{
             latitude: mapData.latitude,
             longitude: mapData.longitude,
-            latitudeDelta: 0.00676,
-            longitudeDelta: 0.006387
+            latitudeDelta: mapData.latitudeDelta,
+            longitudeDelta: mapData.longitudeDelta
           }}
           zoomEnabled={true}
           zoomControlEnabled={true}

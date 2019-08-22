@@ -5,34 +5,28 @@ import { FontAwesome } from "@expo/vector-icons";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
-function getImage(n) {
-  const { loading, error, data } = useQuery(gql`
-    {
-      getBreweries {
-        images {
-          id
-          uri
-          width
-          height
-        }
+const GETBREWERIESQUERY = gql`
+  {
+    getBreweries {
+      images {
+        id
+        uri
+        width
+        height
       }
     }
-  `);
+  }
+`;
+
+//------ Main ------
+const Home = () => {
+  const { loading, error, data } = useQuery(GETBREWERIESQUERY);
 
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>Error :</Text>;
 
-  console.log(data.getBreweries[0].images);
-  imgs = data.getBreweries[0].images;
-  console.log(imgs);
-  //   return imgs.map(img => <Text key={img.id}>{img.uri}</Text>);
-  return imgs[n];
-}
+  let imgs = data.getBreweries[0].images;
 
-//------ Main ------
-const Home = () => {
-  const img1 = getImage(0);
-  const img2 = getImage(2);
   return (
     <ScrollView scrollEnabled={true}>
       <View style={Styles.container}>
@@ -47,9 +41,9 @@ const Home = () => {
         </Text>
 
         <Image
-          style={{ width: img1.width, height: img1.height }}
+          style={{ width: imgs[0].width, height: imgs[0].height }}
           source={{
-            uri: img1.uri
+            uri: imgs[0].uri
           }}
         />
 
@@ -63,9 +57,9 @@ const Home = () => {
         </Text>
 
         <Image
-          style={{ width: img2.width, height: img2.height }}
+          style={{ width: imgs[1].width, height: imgs[1].height }}
           source={{
-            uri: img2.uri
+            uri: imgs[1].uri
           }}
         />
       </View>
