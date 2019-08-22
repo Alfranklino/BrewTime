@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express")
+const { gql } = require("apollo-server-express");
 
 module.exports = gql`
   scalar Date
@@ -57,7 +57,7 @@ module.exports = gql`
     description: String!
     location: Location!
     guide: String!
-    time: String!
+    time: Date!
     brewery: Brewery!
     images: [Image]!
   }
@@ -116,4 +116,4 @@ module.exports = gql`
     token: ID!
     product_id: ID!
   }
-`
+`;

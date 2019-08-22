@@ -89,8 +89,9 @@ const botTabNavigator = createBottomTabNavigator(
     }
   }
 );
-
 const AppContainer = createAppContainer(botTabNavigator);
+
+//------ Main Component ------
 
 export default function App() {
   return (
@@ -99,12 +100,3 @@ export default function App() {
     </ApolloProvider>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });

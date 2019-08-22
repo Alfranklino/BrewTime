@@ -73,7 +73,52 @@ const bookingsSeeds = [
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
     location_id: 3,
     guide: "Simon Stern",
-    time: "2019-07-25 10:00:00",
+    time: "2019-08-25 10:00:00",
+    brewery_id: 1
+  },
+  {
+    title: "Brewery Tour",
+    description:
+      "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
+    location_id: 3,
+    guide: "Will 6ix",
+    time: "2019-08-25 10:00:00",
+    brewery_id: 1
+  },
+  {
+    title: "Brewery Tour",
+    description:
+      "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
+    location_id: 3,
+    guide: "Difranklino",
+    time: "2019-08-25 10:00:00",
+    brewery_id: 1
+  },
+  {
+    title: "Brewery Tour",
+    description:
+      "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
+    location_id: 3,
+    guide: "Eunice Queen",
+    time: "2019-09-15 10:00:00",
+    brewery_id: 1
+  },
+  {
+    title: "Brewery Tour",
+    description:
+      "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
+    location_id: 3,
+    guide: "Kylian Aymrick",
+    time: "2019-09-18 10:00:00",
+    brewery_id: 1
+  },
+  {
+    title: "Brewery Tour",
+    description:
+      "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
+    location_id: 3,
+    guide: "Timon Pumba",
+    time: "2019-09-18 10:00:00",
     brewery_id: 1
   }
 ];
