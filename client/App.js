@@ -11,6 +11,8 @@ import { Entypo } from "@expo/vector-icons";
 // =====================Apollo & Related=================
 import client from "./utils/apolloClient";
 import { ApolloProvider } from "react-apollo";
+// ===== Components & Utils ======
+import { BookedToursProvider } from "./src/utils/context/context";
 
 // ===== Screens ======
 import HomeScreen from "./src/screens/Home";
@@ -96,7 +98,9 @@ const AppContainer = createAppContainer(botTabNavigator);
 export default function App() {
   return (
     <ApolloProvider client={client}>
-      <AppContainer />
+      <BookedToursProvider>
+        <AppContainer />
+      </BookedToursProvider>
     </ApolloProvider>
   );
 }
