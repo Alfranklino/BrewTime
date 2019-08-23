@@ -49,7 +49,10 @@ const Booking = props => {
 
   //Create the list of markers to be displayed inside the database.
   const mark = bookingsDates.reduce(
-    (c, v) => Object.assign(c, { [v]: { selected: true, marked: true } }),
+    (c, v) =>
+      Object.assign(c, {
+        [v]: { selected: true, marked: true, selectedColor: "green" }
+      }),
     {}
   );
 

@@ -13,15 +13,18 @@ import client from "./utils/apolloClient";
 import { ApolloProvider } from "react-apollo";
 // ===== Components & Utils ======
 import { BookedToursProvider } from "./src/utils/context/context";
+import { PurchasesProvider } from "./src/utils/context/context";
 
 // ===== Screens ======
 import HomeScreen from "./src/screens/Home";
 import LocationScreen from "./src/screens/Location";
 import BookingScreen from "./src/screens/Booking";
-import StoreScreen from "./src/screens/Store";
 import ViewerBookingsScreen from "./src/screens/ViewerBookings";
-import ProductDetailsScreen from "./src/screens/ProductDetails";
 import BookingDetailsScreen from "./src/screens/BookingDetails";
+import StoreScreen from "./src/screens/Store";
+import ViewerBasketScreen from "./src/screens/ViewerBasket";
+
+import ProductDetailsScreen from "./src/screens/ProductDetails";
 
 //------ Navigation ------
 const bookingStackNavigator = createStackNavigator({
@@ -32,7 +35,8 @@ const bookingStackNavigator = createStackNavigator({
 
 const storeStackNavigator = createStackNavigator({
   Store: StoreScreen,
-  ProductDetails: ProductDetailsScreen
+  ProductDetails: ProductDetailsScreen,
+  MyBasket: ViewerBasketScreen
 });
 
 const botTabNavigator = createBottomTabNavigator(
@@ -98,9 +102,11 @@ const AppContainer = createAppContainer(botTabNavigator);
 export default function App() {
   return (
     <ApolloProvider client={client}>
-      <BookedToursProvider>
-        <AppContainer />
-      </BookedToursProvider>
+      <PurchasesProvider>
+        <BookedToursProvider>
+          <AppContainer />
+        </BookedToursProvider>
+      </PurchasesProvider>
     </ApolloProvider>
   );
 }

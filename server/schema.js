@@ -98,7 +98,7 @@ module.exports = gql`
     package_dimension: Dimension
     shippable: Boolean
     updated: Date!
-    price: Int!
+    price: Float!
     brewery: Brewery
   }
 
