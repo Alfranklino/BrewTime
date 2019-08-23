@@ -84,7 +84,7 @@ exports.up = pgm => {
       "dimension_id" INTEGER REFERENCES dimensions(id),
       "shippable" BOOLEAN DEFAULT false,
       "updated" TIMESTAMP NOT NULL DEFAULT NOW(),
-      "price" INTEGER NOT NULL,
+      "price" NUMERIC(7,2) NOT NULL,
       "brewery_id" INTEGER REFERENCES breweries(id)
     );
   `),
