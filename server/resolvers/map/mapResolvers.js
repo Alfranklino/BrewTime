@@ -2,23 +2,23 @@ module.exports = {
   Map: {
     async brewery(parent, args, { postgres }, info) {
       const getBreweryQuery = {
-        text: "SELECT * FROM brewtime.breweries",
+        text: "SELECT * FROM brewtime.breweries WHERE id = $1",
         values: [parent.brewery_id]
-      }
+      };
 
-      const getBreweryResult = await postgres.query(getBreweryQuery)
+      const getBreweryResult = await postgres.query(getBreweryQuery);
 
-      return getBreweryResult.rows[0]
+      return getBreweryResult.rows[0];
     },
     async locations(parent, args, { postgres }, info) {
       const getLocationsQuery = {
         text: "SELECT * FROM brewtime.locations WHERE map_id = $1",
         values: [parent.id]
-      }
+      };
 
-      const getLocationsResult = await postgres.query(getLocationsQuery)
+      const getLocationsResult = await postgres.query(getLocationsQuery);
 
-      return getLocationsResult.rows
+      return getLocationsResult.rows;
     }
   }
-}
+};

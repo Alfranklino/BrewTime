@@ -1,9 +1,34 @@
 import React from "react";
-import { View, ScrollView, Text, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
+import { Col, Row, Grid } from "react-native-easy-grid";
+import { Icon } from "react-native-elements";
+import {
+  Container,
+  Content,
+  Header,
+  Left,
+  Right,
+  Body,
+  Title,
+  Subtitle,
+  Button,
+  Text,
+  Badge,
+  Card,
+  CardItem
+} from "native-base";
+
+import DisplayLocation from "../utils/components/DisplayLocation";
 
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
+
+const BreweriesImgList = [
+  { id: 1, path: require("../../assets/Images/img1.jpg") },
+  { id: 2, path: require("../../assets/Images/img2.jpg") },
+  { id: 3, path: require("../../assets/Images/img3.jpg") }
+];
 
 const GET_MAP_DATA = gql`
   {
@@ -48,43 +73,68 @@ function Location() {
   //   console.log(setMarkers);
 
   return (
-    <ScrollView>
-      <Text style={Styles.textTitle}>Location</Text>
-      <View style={{ height: 450 }}>
-        <MapView
-          provider={PROVIDER_GOOGLE}
-          style={Styles.map}
-          initialRegion={{
-            latitude: mapData.latitude,
-            longitude: mapData.longitude,
-            latitudeDelta: mapData.latitudeDelta,
-            longitudeDelta: mapData.longitudeDelta
-          }}
-          zoomEnabled={true}
-          zoomControlEnabled={true}
-        >
+    <Container>
+      <Header style={{ backgroundColor: "#E8F1F2" }}>
+        <Left />
+        <Body>
+          <Title>SideLaunch</Title>
+          <Subtitle>The best brewery ever</Subtitle>
+        </Body>
+        <Right>
+          <Icon
+            raised
+            reverse
+            name="shopping-cart"
+            type="font-awesome"
+            color="green"
+            onPress={() => console.log("hello")}
+          />
+          <Badge danger style={{ position: "absolute" }}>
+            <Text>2</Text>
+          </Badge>
+        </Right>
+      </Header>
+      <ScrollView style={{ zIndex: -99 }}>
+        <View style={{ height: 450 }}>
+          <MapView
+            provider={PROVIDER_GOOGLE}
+            style={Styles.map}
+            initialRegion={{
+              latitude: mapData.latitude,
+              longitude: mapData.longitude,
+              latitudeDelta: mapData.latitudeDelta,
+              longitudeDelta: mapData.longitudeDelta
+            }}
+            zoomEnabled={true}
+            zoomControlEnabled={true}
+          >
+            {locations.map((loc, i) => (
+              <Marker
+                key={i}
+                coordinate={
+                  (LatLng = {
+                    latitude: loc.latitude,
+                    longitude: loc.longitude
+                  })
+                }
+                title={loc.address}
+              />
+            ))}
+          </MapView>
+        </View>
+        <Text style={Styles.textTitle2}>Our Locations</Text>
+        <View style={{ marginHorizontal: 10 }}>
           {locations.map((loc, i) => (
-            <Marker
+            <DisplayLocation
               key={i}
-              coordinate={
-                (LatLng = {
-                  latitude: loc.latitude,
-                  longitude: loc.longitude
-                })
-              }
-              title={loc.address}
+              address={loc.address}
+              description={loc.description}
+              img={BreweriesImgList[i].path}
             />
           ))}
-        </MapView>
-      </View>
-      <Text style={Styles.textTitle2}>Our Agencies</Text>
-      {locations.map((loc, i) => (
-        <View key={i} style={Styles.sectionAddresses}>
-          <Text style={Styles.textContent2}>{loc.address}</Text>
-          <Text>{loc.description}</Text>
         </View>
-      ))}
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 }
 
@@ -92,8 +142,8 @@ const Styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
-    marginTop: 120
+    justifyContent: "center"
+    // marginTop: 120
   },
   sectionAddresses: {
     flex: 1,
