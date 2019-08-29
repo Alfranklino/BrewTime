@@ -1,7 +1,22 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { View, ScrollView, Text, StyleSheet, Button } from "react-native";
+import { View, ScrollView, StyleSheet, Button } from "react-native";
 import { Calendar } from "react-native-calendars";
+import { Col, Row, Grid } from "react-native-easy-grid";
+import { Icon } from "react-native-elements";
+import {
+  Container,
+  Content,
+  Header,
+  Left,
+  Right,
+  Body,
+  Title,
+  Subtitle,
+  // Button,
+  Text,
+  Badge
+} from "native-base";
 import moment from "moment";
 import { without, indexOf } from "lodash";
 
@@ -88,54 +103,77 @@ const Booking = props => {
   }
 
   return (
-    <ScrollView>
-      <Text style={Styles.textTitle}>Booking</Text>
-      <View style={{ height: 350 }}>
-        <Calendar
-          style={Styles.calendar}
-          minDate={new Date()}
-          markedDates={mark}
-          onDayPress={day => {
-            setBookingsToDisplay(bookings, true, day.dateString);
-            console.log("selected day", day);
-          }}
-        />
-      </View>
-      <Button
-        title="View my Bookings"
-        onPress={() => props.navigation.navigate("MyBookings", bookedTours)}
-      />
+    <Container>
+      <Header style={{ backgroundColor: "#E8F1F2" }}>
+        <Left />
+        <Body>
+          <Title>SideLaunch</Title>
+          <Subtitle>The best brewery ever</Subtitle>
+        </Body>
+        <Right>
+          <Icon
+            raised
+            reverse
+            name="shopping-cart"
+            type="font-awesome"
+            color="green"
+            onPress={() => console.log("hello")}
+          />
+          <Badge danger style={{ position: "absolute" }}>
+            <Text>2</Text>
+          </Badge>
+        </Right>
+      </Header>
 
-      <Button
-        title="View All Bookings"
-        onPress={() => setBookingsToDisplay(bookings, false)}
-      />
-      {bookingsAreFiltered && (
-        <View>
-          {bookingsFiltered.map((singleBooking, i) => (
-            // Normally all this bloc should go inside a different component
-            <View key={i} marginBottom={20}>
-              <Text>{singleBooking.title}</Text>
-              <Text>{singleBooking.description}</Text>
-              <Text>{singleBooking.guide}</Text>
-              <Text>
-                {moment(singleBooking.time).format("YYYY-MM-DD hh:mm")}
-              </Text>
-              <Button
-                title="View This Tour"
-                onPress={() =>
-                  props.navigation.navigate("BookingDetails", singleBooking)
-                }
-              />
-              <Button
-                title="Book This Tour"
-                onPress={() => bookATour(singleBooking)}
-              />
-            </View>
-          ))}
+      <ScrollView style={{ zIndex: -99 }}>
+        <Text style={Styles.textTitle}>Booking</Text>
+        <View style={{ height: 350 }}>
+          <Calendar
+            style={Styles.calendar}
+            minDate={new Date()}
+            markedDates={mark}
+            onDayPress={day => {
+              setBookingsToDisplay(bookings, true, day.dateString);
+              console.log("selected day", day);
+            }}
+          />
         </View>
-      )}
-    </ScrollView>
+        <Button
+          title="View my Bookings"
+          onPress={() => props.navigation.navigate("MyBookings", bookedTours)}
+        />
+
+        <Button
+          title="View All Bookings"
+          onPress={() => setBookingsToDisplay(bookings, false)}
+        />
+        {bookingsAreFiltered && (
+          <View>
+            {bookingsFiltered.map((singleBooking, i) => (
+              // Normally all this bloc should go inside a different component
+              <View key={i} marginBottom={20}>
+                <Text>{singleBooking.title}</Text>
+                <Text>{singleBooking.description}</Text>
+                <Text>{singleBooking.guide}</Text>
+                <Text>
+                  {moment(singleBooking.time).format("YYYY-MM-DD hh:mm")}
+                </Text>
+                <Button
+                  title="View This Tour"
+                  onPress={() =>
+                    props.navigation.navigate("BookingDetails", singleBooking)
+                  }
+                />
+                <Button
+                  title="Book This Tour"
+                  onPress={() => bookATour(singleBooking)}
+                />
+              </View>
+            ))}
+          </View>
+        )}
+      </ScrollView>
+    </Container>
   );
 };
 
@@ -143,8 +181,8 @@ const Styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
-    marginTop: 120
+    justifyContent: "center"
+    // marginTop: 120
   },
   sectionAddresses: {
     flex: 1,

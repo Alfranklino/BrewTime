@@ -8,6 +8,7 @@ import {
 } from "react-navigation";
 import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/SimpleLineIcons";
 // =====================Apollo & Related=================
 import client from "./utils/apolloClient";
 import { ApolloProvider } from "react-apollo";
@@ -46,7 +47,7 @@ const botTabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: "Home",
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome name="home" size={24} color={tintColor} />
+          <Icon name="home" size={24} color={tintColor} />
         )
       }
     },
@@ -55,7 +56,7 @@ const botTabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: "Location",
         tabBarIcon: ({ tintColor }) => (
-          <Entypo name="location-pin" size={24} color={tintColor} />
+          <Icon name="location-pin" size={24} color={tintColor} />
         )
       }
     },
@@ -64,7 +65,7 @@ const botTabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: "Booking",
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome name="calendar" size={24} color={tintColor} />
+          <Icon name="calendar" size={24} color={tintColor} />
         )
       }
     },
@@ -73,7 +74,7 @@ const botTabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: "Store",
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome name="shopping-cart" size={24} color={tintColor} />
+          <Icon name="basket" size={24} color={tintColor} />
         )
       }
     }
