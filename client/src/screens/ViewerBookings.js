@@ -1,7 +1,26 @@
 import React from "react";
-import { View, ScrollView, Text, StyleSheet, Button } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import moment from "moment";
 import { sortBy } from "lodash";
+
+import DisplayViewerBooking from "../utils/components/DisplayViewerBooking";
+import { Col, Row, Grid } from "react-native-easy-grid";
+import { Icon as IconHeader } from "react-native-elements";
+import { Icon as IconReg } from "native-base";
+import {
+  Container,
+  Content,
+  Header,
+  Left,
+  Right,
+  Body,
+  Title,
+  Subtitle,
+  Fab,
+  // Button,
+  Text,
+  Badge
+} from "native-base";
 
 const ViewerBookings = props => {
   const viewerBookedTours = props.navigation.state.params;
@@ -11,25 +30,52 @@ const ViewerBookings = props => {
   });
 
   return (
-    <ScrollView>
-      <View style={Styles.container}>
-        <Text>My Bookings</Text>
-        {sortedTours.map((bookedTour, i) => (
-          <View key={i}>
-            <Text>{bookedTour.title}</Text>
-            <Text>{bookedTour.description}</Text>
-            <Text>{bookedTour.guide}</Text>
-            <Text>{moment(bookedTour.time).format("YYYY-MM-DD hh:mm")}</Text>
-            <Button
-              title="Cancel This Tour"
-              //   onPress={() =>
-              //     props.navigation.navigate("BookingDetails", singleBooking)
-              //   }
+    <Container>
+      <Header style={{ backgroundColor: "#E8F1F2" }}>
+        <Left />
+        <Body>
+          <Title>SideLaunch</Title>
+          <Subtitle>The best brewery ever</Subtitle>
+        </Body>
+        <Right>
+          <IconHeader
+            raised
+            reverse
+            name="shopping-cart"
+            type="font-awesome"
+            color="green"
+            onPress={() => console.log("hello")}
+          />
+          <Badge danger style={{ position: "absolute" }}>
+            <Text>2</Text>
+          </Badge>
+        </Right>
+      </Header>
+
+      <ScrollView style={{ height: 200 }}>
+        <View>
+          <Text
+            style={{
+              textAlign: "center",
+              fontSize: 26,
+              fontWeight: "bold",
+              marginTop: 15,
+              marginBottom: 10
+            }}
+          >
+            My Bookings
+          </Text>
+
+          {sortedTours.map((bookedTour, i) => (
+            <DisplayViewerBooking
+              key={i}
+              singleBooking={bookedTour}
+              s_props={{ ...props }}
             />
-          </View>
-        ))}
-      </View>
-    </ScrollView>
+          ))}
+        </View>
+      </ScrollView>
+    </Container>
   );
 };
 

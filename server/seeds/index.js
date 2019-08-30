@@ -86,7 +86,7 @@ const bookingsSeeds = [
     brewery_id: 1
   },
   {
-    title: "Brewery Tour",
+    title: "Come and See",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
     location_id: 3,
@@ -95,7 +95,7 @@ const bookingsSeeds = [
     brewery_id: 1
   },
   {
-    title: "Brewery Tour",
+    title: "Discovery",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
     location_id: 3,
@@ -104,7 +104,7 @@ const bookingsSeeds = [
     brewery_id: 1
   },
   {
-    title: "Brewery Tour",
+    title: "Asta la Vista",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
     location_id: 3,
@@ -113,7 +113,7 @@ const bookingsSeeds = [
     brewery_id: 1
   },
   {
-    title: "Brewery Tour",
+    title: "Quelle Biere!!",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
     location_id: 3,
@@ -122,7 +122,7 @@ const bookingsSeeds = [
     brewery_id: 1
   },
   {
-    title: "Brewery Tour",
+    title: "Let's do it!",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
     location_id: 3,
@@ -131,7 +131,7 @@ const bookingsSeeds = [
     brewery_id: 1
   },
   {
-    title: "Brewery Tour",
+    title: "Really the Best!",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
     location_id: 3,
@@ -140,7 +140,7 @@ const bookingsSeeds = [
     brewery_id: 1
   },
   {
-    title: "Brewery Tour",
+    title: "Family Day",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
     location_id: 3,
@@ -149,7 +149,7 @@ const bookingsSeeds = [
     brewery_id: 1
   },
   {
-    title: "Brewery Tour",
+    title: "Beer Day #1",
     description:
       "Nescio brains an Undead cervello zombies. Sicut thalamus malus putrid brains voodoo horror. Nigh basal ganglia tofth eliv ingdead.",
     location_id: 3,
@@ -355,6 +355,94 @@ const bookingsImagesSeeds = [
   },
   {
     booking_id: 1,
+    image_id: 4
+  },
+  {
+    booking_id: 2,
+    image_id: 1
+  },
+  {
+    booking_id: 2,
+    image_id: 2
+  },
+  {
+    booking_id: 2,
+    image_id: 3
+  },
+  {
+    booking_id: 2,
+    image_id: 4
+  },
+  {
+    booking_id: 3,
+    image_id: 1
+  },
+  {
+    booking_id: 3,
+    image_id: 2
+  },
+  {
+    booking_id: 4,
+    image_id: 3
+  },
+  {
+    booking_id: 4,
+    image_id: 4
+  },
+  {
+    booking_id: 5,
+    image_id: 1
+  },
+  {
+    booking_id: 5,
+    image_id: 4
+  },
+  {
+    booking_id: 6,
+    image_id: 2
+  },
+  {
+    booking_id: 6,
+    image_id: 3
+  },
+  {
+    booking_id: 7,
+    image_id: 3
+  },
+  {
+    booking_id: 8,
+    image_id: 2
+  },
+  {
+    booking_id: 8,
+    image_id: 3
+  },
+  {
+    booking_id: 8,
+    image_id: 4
+  },
+  {
+    booking_id: 9,
+    image_id: 2
+  },
+  {
+    booking_id: 9,
+    image_id: 4
+  },
+  {
+    booking_id: 10,
+    image_id: 1
+  },
+  {
+    booking_id: 10,
+    image_id: 2
+  },
+  {
+    booking_id: 10,
+    image_id: 3
+  },
+  {
+    booking_id: 10,
     image_id: 4
   }
 ];

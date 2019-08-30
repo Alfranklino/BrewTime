@@ -1,9 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { View, ScrollView, StyleSheet, Button } from "react-native";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  Button,
+  TouchableOpacity
+} from "react-native";
 import { Calendar } from "react-native-calendars";
 import { Col, Row, Grid } from "react-native-easy-grid";
-import { Icon } from "react-native-elements";
+import { Icon as IconHeader } from "react-native-elements";
+import { Icon as IconReg } from "native-base";
 import {
   Container,
   Content,
@@ -13,6 +20,7 @@ import {
   Body,
   Title,
   Subtitle,
+  Fab,
   // Button,
   Text,
   Badge
@@ -21,6 +29,7 @@ import moment from "moment";
 import { without, indexOf } from "lodash";
 
 import { BookedToursContext } from "../utils/context/context";
+import DisplayBooking from "../utils/components/DisplayBooking";
 
 import gql from "graphql-tag";
 
@@ -111,7 +120,7 @@ const Booking = props => {
           <Subtitle>The best brewery ever</Subtitle>
         </Body>
         <Right>
-          <Icon
+          <IconHeader
             raised
             reverse
             name="shopping-cart"
@@ -126,7 +135,7 @@ const Booking = props => {
       </Header>
 
       <ScrollView style={{ zIndex: -99 }}>
-        <Text style={Styles.textTitle}>Booking</Text>
+        <Text style={Styles.textTitle}>Book a Tour</Text>
         <View style={{ height: 350 }}>
           <Calendar
             style={Styles.calendar}
@@ -138,41 +147,47 @@ const Booking = props => {
             }}
           />
         </View>
-        <Button
-          title="View my Bookings"
-          onPress={() => props.navigation.navigate("MyBookings", bookedTours)}
-        />
 
-        <Button
+        {/* <Button
           title="View All Bookings"
           onPress={() => setBookingsToDisplay(bookings, false)}
-        />
+        /> */}
         {bookingsAreFiltered && (
-          <View>
+          <View style={{ marginHorizontal: 5 }}>
             {bookingsFiltered.map((singleBooking, i) => (
-              // Normally all this bloc should go inside a different component
-              <View key={i} marginBottom={20}>
-                <Text>{singleBooking.title}</Text>
-                <Text>{singleBooking.description}</Text>
-                <Text>{singleBooking.guide}</Text>
-                <Text>
-                  {moment(singleBooking.time).format("YYYY-MM-DD hh:mm")}
-                </Text>
-                <Button
-                  title="View This Tour"
-                  onPress={() =>
-                    props.navigation.navigate("BookingDetails", singleBooking)
-                  }
-                />
-                <Button
-                  title="Book This Tour"
-                  onPress={() => bookATour(singleBooking)}
-                />
-              </View>
+              <DisplayBooking
+                key={i}
+                singleBooking={singleBooking}
+                s_props={{ ...props }}
+                f_book={bookATour}
+              />
             ))}
           </View>
         )}
       </ScrollView>
+      <TouchableOpacity
+        onPress={() => props.navigation.navigate("MyBookings", bookedTours)}
+      >
+        <Badge
+          style={{
+            backgroundColor: "purple",
+            position: "relative",
+            left: 370,
+            bottom: 50,
+            zIndex: 99
+          }}
+        >
+          <Text style={{ fontSize: 13 }}>2</Text>
+        </Badge>
+        <Fab
+          active={true}
+          style={{ backgroundColor: "red" }}
+          position="bottomRight"
+          onPress={() => props.navigation.navigate("MyBookings", bookedTours)}
+        >
+          <IconReg name="calendar"></IconReg>
+        </Fab>
+      </TouchableOpacity>
     </Container>
   );
 };
