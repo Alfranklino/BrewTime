@@ -23,7 +23,9 @@ const DisplayLocation = props => {
     <Card style={{ marginBottom: 10 }}>
       <CardItem>
         <Body>
-          <Text>{props.address}</Text>
+          <Text style={{ color: "green", fontSize: 15, fontWeight: "700" }}>
+            {props.address}
+          </Text>
           <Text note>SideLaunch</Text>
         </Body>
       </CardItem>
